@@ -53,7 +53,7 @@ To generate this readme: `node readme.js`
  
  https://kubernetes.io/docs/tasks/tools/install-kubectl/
  
- - `sudo swapoof -a`
+ - `sudo swapoff -a`
  - `sudo nano /etc/fstab -->> comment line with swap (K8S not running on system with swap)`
  - `sudo apt-get update && sudo apt-get install -y apt-transport-https`
  - `curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -`
