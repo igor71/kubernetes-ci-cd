@@ -16,17 +16,68 @@ To generate this readme: `node readme.js`
 
 ## Prerequisites
 
-- Install VirtualBox
+- Optional: Install VirtualBox
 
  https://www.virtualbox.org/wiki/Downloads
 
 - Install the latest versions of Docker, Minikube, and Kubectl
-
- https://docs.docker.com/docker-for-mac/install/
- https://github.com/kubernetes/minikube/releases
+  
+### Docker Engine installation:
+  
+ - sudo apt-get update
+ - sudo apt-key adv \
+   --keyserver hkp://ha.pool.sks-keyservers.net:80 \
+   --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+ - sudo mkdir -p /etc/apt/sources.list.d
+ - echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" | sudo tee /etc/apt/sources.list.d/docker.list
+ - sudo apt-get update
+ - apt-cache policy docker-engine
+ - sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual
+ - sudo apt-get autoremove
+ - apt-cache madison docker-engine
+ - sudo apt-get install docker-engine=17.05.0~ce-0~ubuntu-xenial
+ - sudo service docker start
+ - sudo docker run hello-world
+ - sudo usermod -aG docker $USER
+ 
+ ### Install crictl (kubectl dependence)
+ 
+ https://github.com/kubernetes-sigs/cri-tools/tree/master
+ 
+ - VERSION="v1.13.0"
+ - wget https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/crictl-$VERSION-linux-amd64.tar.gz
+ - sudo tar zxvf crictl-$VERSION-linux-amd64.tar.gz -C /usr/local/bin
+ - rm -f crictl-$VERSION-linux-amd64.tar.gz
+ 
+ ### Install kubectl
+ 
  https://kubernetes.io/docs/tasks/tools/install-kubectl/
  
-- Install Helm
+ - sudo swapoof -a
+ - sudo nano /etc/fstab -->> comment line with swap (K8S not running on system with swap)
+ - sudo apt-get update && sudo apt-get install -y apt-transport-https
+ - curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+ - sudo touch /etc/apt/sources.list.d/kubernetes.list 
+ - echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+ - sudo apt-get update && sudo apt-get install -y kubectl
+ - kubectl version | grep "GitVersion" | cut -d',' -f3
+ 
+ ### Install minikube
+ 
+ https://github.com/kubernetes/minikube/releases
+ 
+ - curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube
+ - sudo mv -v minikube /usr/local/bin
+ - minikube version
+ - sudo minikube start --vm-driver=none --kubernetes-version v1.13.3
+ - sudo chown -R $USER $HOME/.minikube
+ - sudo chgrp -R $USER $HOME/.minikube
+ - sudo chown -R $USER $HOME/.kube
+ - sudo chgrp -R $USER $HOME/.kube
+ - sudo minikube addons enable heapster
+ - sudo minikube addons enable ingress
+ 
+ ### Install Helm
 
  `curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh; chmod 700 get_helm.sh; ./get_helm.sh`
 
