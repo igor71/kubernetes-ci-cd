@@ -69,7 +69,6 @@ To generate this readme: `node readme.js`
  - `curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube`
  - `sudo mv -v minikube /usr/local/bin`
  - `minikube version`
- - `sudo minikube start --vm-driver=none --kubernetes-version v1.13.3`
  - `sudo chown -R $USER $HOME/.minikube`
  - `sudo chgrp -R $USER $HOME/.minikube`
  - `sudo chown -R $USER $HOME/.kube`
@@ -94,7 +93,7 @@ To generate this readme: `node readme.js`
 
 Start up the Kubernetes cluster with Minikube, giving it some extra resources.
 
-`minikube start --memory 8000 --cpus 2 --kubernetes-version v1.11.0`
+`sudo minikube start --vm-driver=none --memory 8000 --cpus 2 --kubernetes-version v1.13.3`
 
 #### Step2
 
