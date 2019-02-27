@@ -100,11 +100,11 @@ Start up the Kubernetes cluster with Minikube, giving it some extra resources.
 Enable the Minikube add-ons Heapster and Ingress.
 
  - `sudo minikube addons enable heapster`
- - `sudo minikube addons enable ingress
+ - `sudo minikube addons enable ingress`
 
 #### Step3
 
-View the Minikube Dashboard, a web UI for managing deployments.
+Enable view the Minikube Dashboard, a web UI for managing deployments.
 
 `minikube service kubernetes-dashboard --namespace kube-system`
 
