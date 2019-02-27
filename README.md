@@ -106,7 +106,23 @@ Enable the Minikube add-ons Heapster and Ingress.
 
 Enable view the Minikube Dashboard, a web UI for managing deployments.
 
-`minikube service kubernetes-dashboard --namespace kube-system`
+Download https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended/kubernetes-dashboard.yaml file
+to $HOME directory:
+
+- `cd $HOME`
+- `wget https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended/kubernetes-dashboard.yaml`
+- edit kubernetes-dashboard.yaml file and add followin line after `- --auto-generate-certificates`: `- --enable-skip-login`
+- `mkdir $HOME/certs`
+- `cd $HOME/certs`
+- `openssl genrsa -out dashboard.key 2048`
+- `openssl rsa -in dashboard.key -out dashboard.key`
+- `openssl req -sha256 -new -key dashboard.key -out dashboard.csr -subj '/CN=<IP_ADDRESS>'`
+- `openssl x509 -req -sha256 -days 365 -in dashboard.csr -signkey dashboard.key -out dashboard.crt`
+- `kubectl create -f kubernetes-dashboard.yaml`
+
+
+
+- `minikube service kubernetes-dashboard --namespace kube-system`
 
 #### Step4
 
