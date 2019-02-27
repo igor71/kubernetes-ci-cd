@@ -88,12 +88,12 @@ To generate this readme: `node readme.js`
 
 Start up the Kubernetes cluster with Minikube, giving it some extra resources.
 
-`sudo minikube start --vm-driver=none --memory 8000 --cpus 2 --kubernetes-version v1.13.3`
-- `sudo chown -R $USER $HOME/.minikube`
+ - `sudo minikube start --vm-driver=none --memory 8000 --cpus 2 --kubernetes-version v1.13.3`
+ - `sudo chown -R $USER $HOME/.minikube`
  - `sudo chgrp -R $USER $HOME/.minikube`
  - `sudo chown -R $USER $HOME/.kube`
  - `sudo chgrp -R $USER $HOME/.kube`
-`
+
 
 #### Step2
 
