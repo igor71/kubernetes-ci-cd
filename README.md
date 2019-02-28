@@ -140,8 +140,8 @@ to $HOME directory:
 - `kubectl get pod,svc -n kube-system`
 - `kubectl --namespace kube-system get rs`
 - `kubectl -n kube-system edit service kubernetes-dashboard`
-   Edit the kubernetes-dashboard service and change the following option:
-  `spec.type from ClusterIP to NodePort`
+-  Edit the kubernetes-dashboard service and change the following option:
+- `spec.type from ClusterIP to NodePort`
 - `kubectl get services --namespace kube-system` -->> check forwarding port number
 - Access dashboard using http://<server-Name>:<port-number> and chose SKIP  option
 
