@@ -144,9 +144,11 @@ to $HOME directory:
 - `spec.type from ClusterIP to NodePort`
 - `kubectl get services --namespace kube-system` -->> check forwarding port number
 - Access dashboard using http://<server-Name>:<port-number> and chose SKIP  option
-- Reference:
  
- [Access Control](https://github.com/kubernetes/dashboard/wiki/Access-control#authorization-header)
+- References:
+- [Access Control](https://github.com/kubernetes/dashboard/wiki/Access-control#authorization-header)
+- [Dashboard arguments](https://github.com/kubernetes/dashboard/wiki/Dashboard-arguments)
+- [Accessing Dashboard 1.7.X and above](https://github.com/kubernetes/dashboard/wiki/Accessing-Dashboard---1.7.X-and-above)
 
 
 #### Step4
