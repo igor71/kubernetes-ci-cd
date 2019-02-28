@@ -111,7 +111,7 @@ to $HOME directory:
 
 - `cd $HOME`
 - `wget https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended/kubernetes-dashboard.yaml`
-- edit kubernetes-dashboard.yaml file and add followin line after `- --auto-generate-certificates`: `- --enable-skip-login`
+- edit kubernetes-dashboard.yaml file and add `- --enable-skip-login` line after `- --auto-generate-certificates`: 
 - `mkdir $HOME/certs`
 - `cd $HOME/certs`
 - `openssl genrsa -out dashboard.key 2048`
@@ -145,7 +145,7 @@ to $HOME directory:
 - `kubectl get services --namespace kube-system` -->> check forwarding port number
 - Access dashboard using http://<server-Name>:<port-number> and chose SKIP  option
  
-- References:
+#### References:
 - [Access Control](https://github.com/kubernetes/dashboard/wiki/Access-control#authorization-header)
 - [Dashboard arguments](https://github.com/kubernetes/dashboard/wiki/Dashboard-arguments)
 - [Accessing Dashboard 1.7.X and above](https://github.com/kubernetes/dashboard/wiki/Accessing-Dashboard---1.7.X-and-above)
