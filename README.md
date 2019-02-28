@@ -118,11 +118,32 @@ to $HOME directory:
 - `openssl rsa -in dashboard.key -out dashboard.key`
 - `openssl req -sha256 -new -key dashboard.key -out dashboard.csr -subj '/CN=<IP_ADDRESS>'`
 - `openssl x509 -req -sha256 -days 365 -in dashboard.csr -signkey dashboard.key -out dashboard.crt`
+- `kubectl -n kube-system create secret generic kubernetes-dashboard-certs --from-file=$HOME/certs`
 - `kubectl create -f kubernetes-dashboard.yaml`
-
-
-
-- `minikube service kubernetes-dashboard --namespace kube-system`
+-  Create dashboard-admin.yaml:
+   apiVersion: rbac.authorization.k8s.io/v1beta1
+   kind: ClusterRoleBinding
+   metadata:
+     name: kubernetes-dashboard
+     labels:
+       k8s-app: kubernetes-dashboard
+   roleRef:
+     apiGroup: rbac.authorization.k8s.io
+     kind: ClusterRole
+     name: cluster-admin
+   subjects:
+   - kind: ServiceAccount
+     name: kubernetes-dashboard
+     namespace: kube-system
+- `kubectl create -f dashboard-admin.yaml`
+- `kubectl get svc --namespace kube-system`
+- `kubectl get pod,svc -n kube-system`
+- `kubectl --namespace kube-system get rs`
+- `kubectl -n kube-system edit service kubernetes-dashboard`
+   Edit the kubernetes-dashboard service and change the following option:
+  `spec.type from ClusterIP to NodePort`
+- `kubectl get services --namespace kube-system` -->> check forwarding port number
+- Access dashboard using http://<server-Name>:<port-number> and chose SKIP  option
 
 #### Step4
 
