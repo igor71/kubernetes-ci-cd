@@ -146,7 +146,7 @@ to $HOME directory:
 - Access dashboard using http://<server-Name>:<port-number> and chose SKIP  option
 - Reference:
  
- [Access Control]https://github.com/kubernetes/dashboard/wiki/Access-control#authorization-header)
+ [Access Control](https://github.com/kubernetes/dashboard/wiki/Access-control#authorization-header)
 
 
 #### Step4
