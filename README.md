@@ -149,6 +149,7 @@ to $HOME directory:
 - [Access Control](https://github.com/kubernetes/dashboard/wiki/Access-control#authorization-header)
 - [Dashboard arguments](https://github.com/kubernetes/dashboard/wiki/Dashboard-arguments)
 - [Accessing Dashboard 1.7.X and above](https://github.com/kubernetes/dashboard/wiki/Accessing-Dashboard---1.7.X-and-above)
+- [Deploying a publicly accessible Kubernetes Dashboard](https://joshh.info/2018/kubernetes-dashboard-https-nodeport/)
 
 
 #### Step4
