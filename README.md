@@ -145,6 +145,11 @@ to $HOME directory:
 - `kubectl get services --namespace kube-system` -->> check forwarding port number
 - Access dashboard using http://<server-Name>:<port-number> and chose SKIP  option
  
+#### Removing Dashboard
+- kubectl delete -f https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended/kubernetes-dashboard.yaml
+- kubectl delete -f $HOME/kubernetes-dashboard.yaml
+- kubectl -n kube-system delete $(kubectl -n kube-system get pod -o name | grep dashboard)
+ 
 #### References:
 - [Access Control](https://github.com/kubernetes/dashboard/wiki/Access-control#authorization-header)
 - [Dashboard arguments](https://github.com/kubernetes/dashboard/wiki/Dashboard-arguments)
