@@ -104,7 +104,7 @@ Enable the Minikube add-ons Heapster and Ingress.
 
 #### Step3
 
-Enable view the Minikube Dashboard, a web UI for managing deployments.
+Enable the Minikube Dashboard, a web UI for managing deployments.
 
 Download https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended/kubernetes-dashboard.yaml file
 to $HOME directory:
