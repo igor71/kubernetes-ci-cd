@@ -111,7 +111,7 @@ to $HOME directory:
 
 - `cd $HOME`
 - `wget https://raw.githubusercontent.com/kubernetes/dashboard/master/aio/deploy/recommended/kubernetes-dashboard.yaml`
-- edit kubernetes-dashboard.yaml file and add `- --enable-skip-login` line after `- --auto-generate-certificates`: 
+- edit kubernetes-dashboard.yaml file and add `- --enable-skip-login` line after `- --auto-generate-certificates`
 - `mkdir $HOME/certs`
 - `cd $HOME/certs`
 - `openssl genrsa -out dashboard.key 2048`
