@@ -121,7 +121,7 @@ to $HOME directory:
 - `kubectl -n kube-system create secret generic kubernetes-dashboard-certs --from-file=$HOME/certs`
 - `kubectl create -f kubernetes-dashboard.yaml`
 -  Create dashboard-admin.yaml:
-   apiVersion: rbac.authorization.k8s.io/v1beta1
+   ```apiVersion: rbac.authorization.k8s.io/v1beta1
    kind: ClusterRoleBinding
    metadata:
      name: kubernetes-dashboard
@@ -134,7 +134,7 @@ to $HOME directory:
    subjects:
    - kind: ServiceAccount
      name: kubernetes-dashboard
-     namespace: kube-system
+     namespace: kube-system```
 - `kubectl create -f dashboard-admin.yaml`
 - `kubectl get svc --namespace kube-system`
 - `kubectl get pod,svc -n kube-system`
