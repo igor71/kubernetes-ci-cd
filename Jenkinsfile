@@ -12,18 +12,15 @@ node {
     imageName = "${registryHost}${appName}:${tag}"
     env.BUILDIMG=imageName
 
-    stage ('Build') {
-	   steps {
+    stage "Build"
+    
         sh "docker build -t ${imageName} -f applications/hello-kenzan/Dockerfile applications/hello-kenzan"
-       }
-	}
-    stage ('Push') {
-	   steps {
+    
+    stage "Push"
+
         sh "docker push ${imageName}"
-	   }
-    }
-    stage ('Deploy') {
-       steps {
+	
+    stage "Deploy"
          sh"""#!/bin/bash -xe
               echo 'Replasing string with docker image neme within deployment.yaml file'
               sed -i 's/127.0.0.1:30400/hello-kenzan:$BUILD_TAG/${imageName}' applications/${appName}/k8s/deployment.yaml
