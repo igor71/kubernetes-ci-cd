@@ -27,5 +27,4 @@ node {
               "sed -i 's/127.0.0.1:30400/hello-kenzan:$BUILD_TAG' applications/${appName}/k8s/deployment.yaml"
           ''' 
         kubernetesDeploy configs: "applications/${appName}/k8s/deployment.yaml", kubeconfigId: 'kenzan_kubeconfig' 
-}
-
+    }
