@@ -6,7 +6,7 @@ COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
 
 #Installing Docker
-RUN apt-get update && apt-get install software-properties-common apt-transport-https ca-certificates -y; \
+RUN apt-get update && apt-get install nano software-properties-common apt-transport-https ca-certificates -y; \
 curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -;\
 add-apt-repository  "deb [arch=amd64] https://download.docker.com/linux/debian  $(lsb_release -cs) stable";\
 apt-get update && apt-get install docker-ce -y
@@ -18,6 +18,7 @@ echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/so
 apt-get update && apt-get install -y kubectl
 
 # Grant jenkins user group access to /var/run/docker.sock
-RUN addgroup --gid 1001 dsock
-RUN gpasswd -a jenkins dsock 
+RUN addgroup --gid 1001 dsock && \
+    gpasswd -a jenkins dsock && \
+    usermod -a -G docker jenkins
 USER jenkins
