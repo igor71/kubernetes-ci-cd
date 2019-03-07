@@ -6,7 +6,7 @@ node {
     
     sh "git rev-parse --short HEAD > commit-id"
 
-    tag = latest
+    tag = "latest"
     appName = "hello-kenzan"
     registryHost = "127.0.0.1:30400/"
     imageName = "${registryHost}${appName}:${tag}"
