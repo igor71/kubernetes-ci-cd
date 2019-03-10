@@ -13,6 +13,7 @@ node {
     stringName = "${registryHost}${appName}:deployment"
     env.BUILDIMG=imageName
     env.STRING=stringName
+    env.APPNAME=appName
 
     stage  ('Build') {
     
@@ -30,7 +31,7 @@ node {
 	
         sh'''#!/bin/bash -xe
               echo 'Replasing string with docker image neme within deployment.yaml file'
-              sed -i "s|$STRING|$BUILDIMG|g" applications/${appName}/k8s/deployment.yaml
+              sed -i "s|$STRING|$BUILDIMG|g" applications/${APPNAME}/k8s/deployment.yaml
           ''' 
         kubernetesDeploy configs: "applications/${appName}/k8s/deployment.yaml", kubeconfigId: 'kenzan_kubeconfig' 
     }
