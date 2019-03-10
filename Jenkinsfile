@@ -24,7 +24,6 @@ node {
 	
         sh'''#!/bin/bash -xe
               echo 'Replasing string with docker image neme within deployment.yaml file'
-	      tag=readFile('commit-id').replace("\n", "").replace("\r", "")
 	      local tag=$2
               sed -i "s/127.0.0.1:30400/hello-kenzan:deployment/127.0.0.1:30400/hello-kenzan:${tag}" applications/hello-kenzan/k8s/deployment.yaml
           ''' 
