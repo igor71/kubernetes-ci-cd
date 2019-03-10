@@ -14,15 +14,19 @@ node {
     env.BUILDIMG=imageName
     env.STRING=stringName
 
-    stage "Build"
+    stage  ('Build') {
     
         sh "docker build -t ${imageName} -f applications/hello-kenzan/Dockerfile applications/hello-kenzan"
+		
+	}
     
-    stage "Push"
+    stage ('Push') {
 
         sh "docker push ${imageName}"
+		
+	}
 	
-    stage "Deploy"
+    stage ('Deploy') {
 	
         sh'''#!/bin/bash -xe
               echo 'Replasing string with docker image neme within deployment.yaml file'
@@ -30,3 +34,4 @@ node {
           ''' 
         kubernetesDeploy configs: "applications/${appName}/k8s/deployment.yaml", kubeconfigId: 'kenzan_kubeconfig' 
     }
+}
