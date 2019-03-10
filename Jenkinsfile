@@ -24,7 +24,7 @@ node {
 	
         sh'''#!/bin/bash -xe
               echo 'Replasing string with docker image neme within deployment.yaml file'
-              sed -i "s/127.0.0.1:30400/hello-kenzan:deployment/127.0.0.1:30400/hello-kenzan:${tag}" applications/${appName}/k8s/deployment.yaml"
+              sed -i "s/127.0.0.1:30400/hello-kenzan:deployment/127.0.0.1:30400/hello-kenzan:${tag}" applications/${appName}/k8s/deployment.yaml
           ''' 
         kubernetesDeploy configs: "applications/${appName}/k8s/deployment.yaml", kubeconfigId: 'kenzan_kubeconfig' 
     }
