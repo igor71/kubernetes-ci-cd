@@ -86,6 +86,10 @@ spec:
         ports:
         - containerPort: 5000
           name: registry
+        env:
+        - name: REGISTRY_STORAGE_DELETE_ENABLED
+          value: true
+        
       - name: registryui
         image: hyper/docker-registry-web:latest
         ports:
@@ -95,8 +99,6 @@ spec:
           value: http://localhost:5000/v2
         - name: REGISTRY_NAME
           value: cluster-registry
-        - name: REGISTRY_STORAGE_DELETE_ENABLED
-          value: true
       volumes:
       - name: docker
         hostPath:
