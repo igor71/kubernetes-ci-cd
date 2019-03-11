@@ -95,6 +95,8 @@ spec:
           value: http://localhost:5000/v2
         - name: REGISTRY_NAME
           value: cluster-registry
+        - name: REGISTRY_STORAGE_DELETE_ENABLED
+          value: true
       volumes:
       - name: docker
         hostPath:
