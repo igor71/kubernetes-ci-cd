@@ -88,7 +88,7 @@ spec:
           name: registry
         env:
         - name: REGISTRY_STORAGE_DELETE_ENABLED
-          value: yes
+          value: "true"
         
       - name: registryui
         image: hyper/docker-registry-web:latest
